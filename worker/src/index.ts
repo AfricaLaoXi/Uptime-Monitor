@@ -109,6 +109,13 @@ function getAuthSecret(env: Bindings): string | null {
   return env.ADMIN_API_KEY || env.ADMIN_PASSWORD || null;
 }
 
+function toSqlDateTime(value?: string | null): string | null {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toISOString().slice(0, 19).replace('T', ' ');
+}
+
 function base64UrlEncode(input: string | ArrayBuffer): string {
   const bytes = typeof input === 'string' ? textEncoder.encode(input) : new Uint8Array(input);
   let binary = '';
@@ -623,10 +630,15 @@ app.post('/incidents', async (c) => {
     if (!body.title) return c.json({ error: 'Missing title' }, 400);
     const severity = ['info', 'warning', 'critical'].includes(body.severity || '') ? body.severity : 'info';
     const type = body.type === 'maintenance' ? 'maintenance' : 'incident';
+    const scheduledStart = type === 'maintenance' ? toSqlDateTime(body.scheduled_start) : null;
+    const scheduledEnd = type === 'maintenance' ? toSqlDateTime(body.scheduled_end) : null;
+    if (type === 'maintenance' && (!scheduledStart || !scheduledEnd || scheduledEnd <= scheduledStart)) {
+      return c.json({ error: 'Invalid maintenance window' }, 400);
+    }
     const now = new Date().toISOString();
     const result = await c.env.DB.prepare(
       'INSERT INTO incidents (title, description, severity, status, type, scheduled_start, scheduled_end, affected_monitors, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-    ).bind(body.title, body.description || null, severity, 'active', type, body.scheduled_start || null, body.scheduled_end || null, body.affected_monitors || null, now, now).run();
+    ).bind(body.title, body.description || null, severity, 'active', type, scheduledStart, scheduledEnd, body.affected_monitors || null, now, now).run();
     return c.json({ success: true, id: result.meta.last_row_id }, 201);
   } catch (e: unknown) {
     return c.json({ error: e instanceof Error ? e.message : 'Unknown error' }, 500);
@@ -1007,7 +1019,7 @@ async function performCheck(monitor: Monitor, env: Bindings) {
   // 检查是否在计划维护窗口内（如果是，跳过告警）
   try {
     const { results: activeMaint } = await env.DB.prepare(
-      "SELECT affected_monitors FROM incidents WHERE type = 'maintenance' AND status = 'active' AND scheduled_start <= datetime('now') AND scheduled_end >= datetime('now')"
+      "SELECT affected_monitors FROM incidents WHERE type = 'maintenance' AND status = 'active' AND datetime(scheduled_start) <= datetime('now') AND datetime(scheduled_end) >= datetime('now')"
     ).all<{ affected_monitors: string | null }>();
     if (activeMaint && activeMaint.length > 0) {
       const inMaintenance = activeMaint.some(m => {

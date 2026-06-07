@@ -23,7 +23,7 @@
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <button @click="showIncidents = true" class="flex items-center gap-1.5 px-3 py-2 bg-slate-200 dark:bg-slate-700/50 hover:bg-slate-300 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium rounded-xl transition-all cursor-pointer border border-slate-300 dark:border-slate-600/50">
-            <i class="fas fa-flag text-xs"></i> 事件公告
+            <i class="fas fa-flag text-xs"></i> 事件/维护
           </button>
           <button @click="showSettings = true" class="flex items-center gap-1.5 px-3 py-2 bg-slate-200 dark:bg-slate-700/50 hover:bg-slate-300 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium rounded-xl transition-all cursor-pointer border border-slate-300 dark:border-slate-600/50">
             <i class="fas fa-cog text-xs"></i> 站点设置
