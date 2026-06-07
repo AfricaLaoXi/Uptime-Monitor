@@ -65,11 +65,11 @@ export const getDaysRemaining = (dateStr) => {
  */
 export const getExpiryClass = (dateStr) => {
     const days = getDaysRemaining(dateStr);
-    if (days === null) return 'text-slate-500 border-slate-700';
-    if (days < 0)  return 'text-slate-500 border-slate-700 opacity-60';
-    if (days < 7)  return 'text-red-400 border-red-500/25 bg-red-500/10';
-    if (days < 30) return 'text-yellow-400 border-yellow-400/25 bg-yellow-400/10';
-    return 'text-emerald-400 border-emerald-500/25 bg-emerald-500/10';
+    if (days === null) return 'text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60';
+    if (days < 0)  return 'text-red-700 dark:text-red-300 border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10';
+    if (days < 7)  return 'text-red-700 dark:text-red-300 border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10';
+    if (days < 30) return 'text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-400/30 bg-yellow-50 dark:bg-yellow-400/10';
+    return 'text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/25 bg-emerald-50 dark:bg-emerald-500/10';
 };
 
 /**

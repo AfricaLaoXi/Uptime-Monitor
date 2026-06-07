@@ -1,5 +1,5 @@
 <template>
-  <div class="pl-[26px] monitor-row3">
+  <div class="monitor-row3 mt-4">
     <div class="flex gap-[1.5px] items-end">
       <div v-for="(day, i) in displayDays" :key="i"
         class="uptime-bar-cell flex-1 rounded-[2px]"
@@ -16,7 +16,7 @@
       <span class="text-[10px] font-mono text-slate-400/60 dark:text-slate-600/60">90 天前</span>
       <span v-if="monitor.uptime_30d != null" class="text-[11px] font-mono font-semibold"
         :class="monitor.uptime_30d >= 99.9 ? 'text-emerald-500' : monitor.uptime_30d >= 95 ? 'text-yellow-500' : 'text-red-500'"
-      >30天: {{ monitor.uptime_30d }}%</span>
+      >近30天: {{ monitor.uptime_30d }}%</span>
       <span class="text-[10px] font-mono text-slate-400/60 dark:text-slate-600/60">昨天</span>
     </div>
   </div>
