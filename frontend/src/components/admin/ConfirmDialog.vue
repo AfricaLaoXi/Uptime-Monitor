@@ -1,7 +1,7 @@
 <template>
   <transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100">
-    <div class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-      <div class="glass w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden">
+    <div class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm admin-modal-overlay">
+      <div class="glass admin-modal w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden">
         <div class="p-6">
           <div class="w-12 h-12 bg-red-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>

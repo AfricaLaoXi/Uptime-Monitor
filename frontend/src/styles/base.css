@@ -189,6 +189,89 @@ html:not(.dark) ::-webkit-scrollbar-thumb:hover { background:#94a3b8; }
     to { opacity:1; transform:scale(1) translateY(0); }
 }
 
+/* ── 后台弹窗浅色模式 ── */
+.admin-modal-overlay {
+    background: rgba(2,6,23,0.62);
+    backdrop-filter: blur(6px);
+}
+html:not(.dark) .admin-modal-overlay {
+    background: rgba(15,23,42,0.44) !important;
+    backdrop-filter: blur(5px);
+}
+html:not(.dark) .admin-modal {
+    background: rgba(248,250,252,0.98);
+    border-color: rgba(203,213,225,0.9);
+    color: #0f172a;
+    box-shadow: 0 28px 80px rgba(15,23,42,0.22), 0 2px 8px rgba(15,23,42,0.08);
+}
+html:not(.dark) .admin-modal [class*="border-white"],
+html:not(.dark) .admin-modal [class*="border-slate-700"],
+html:not(.dark) .admin-modal [class*="border-slate-600"] {
+    border-color: #cbd5e1 !important;
+}
+html:not(.dark) .admin-modal [class*="divide-slate-700"] > :not([hidden]) ~ :not([hidden]) {
+    border-color: #e2e8f0 !important;
+}
+html:not(.dark) .admin-modal [class*="bg-slate-900"],
+html:not(.dark) .admin-modal [class*="bg-slate-800"] {
+    background-color: #f8fafc !important;
+}
+html:not(.dark) .admin-modal [class*="bg-slate-700"],
+html:not(.dark) .admin-modal [class*="bg-slate-600"] {
+    background-color: #e2e8f0 !important;
+}
+html:not(.dark) .admin-modal [class*="bg-green-900"] { background-color: #dcfce7 !important; }
+html:not(.dark) .admin-modal [class*="bg-cyan-900"] { background-color: #cffafe !important; }
+html:not(.dark) .admin-modal [class*="bg-blue-900"] { background-color: #dbeafe !important; }
+html:not(.dark) .admin-modal [class*="bg-purple-900"] { background-color: #ede9fe !important; }
+html:not(.dark) .admin-modal [class*="bg-orange-900"] { background-color: #ffedd5 !important; }
+html:not(.dark) .admin-modal [class*="bg-rose-900"] { background-color: #ffe4e6 !important; }
+html:not(.dark) .admin-modal [class*="bg-sky-900"] { background-color: #e0f2fe !important; }
+html:not(.dark) .admin-modal h3,
+html:not(.dark) .admin-modal h4,
+html:not(.dark) .admin-modal label,
+html:not(.dark) .admin-modal span.text-white,
+html:not(.dark) .admin-modal p.text-white {
+    color: #0f172a !important;
+}
+html:not(.dark) .admin-modal .text-slate-300 { color: #475569 !important; }
+html:not(.dark) .admin-modal .text-slate-400 { color: #64748b !important; }
+html:not(.dark) .admin-modal .text-slate-500,
+html:not(.dark) .admin-modal .text-slate-600 { color: #64748b !important; }
+html:not(.dark) .admin-modal .text-green-400 { color: #16a34a !important; }
+html:not(.dark) .admin-modal .text-cyan-400,
+html:not(.dark) .admin-modal .text-cyan-300 { color: #0891b2 !important; }
+html:not(.dark) .admin-modal .text-blue-400 { color: #2563eb !important; }
+html:not(.dark) .admin-modal .text-purple-400 { color: #7c3aed !important; }
+html:not(.dark) .admin-modal .text-orange-400,
+html:not(.dark) .admin-modal .text-orange-300 { color: #ea580c !important; }
+html:not(.dark) .admin-modal .text-red-400 { color: #dc2626 !important; }
+html:not(.dark) .admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+html:not(.dark) .admin-modal textarea,
+html:not(.dark) .admin-modal select {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+    color-scheme: light;
+    box-shadow: inset 0 1px 2px rgba(15,23,42,0.04);
+}
+html:not(.dark) .admin-modal input::placeholder,
+html:not(.dark) .admin-modal textarea::placeholder {
+    color: #94a3b8 !important;
+}
+html:not(.dark) .admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+html:not(.dark) .admin-modal textarea:focus,
+html:not(.dark) .admin-modal select:focus {
+    border-color: #22c55e !important;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.14);
+}
+html:not(.dark) .admin-modal button.text-white,
+html:not(.dark) .admin-modal button.text-white *,
+html:not(.dark) .admin-modal button[class*="bg-"][class*="-600"],
+html:not(.dark) .admin-modal button[class*="bg-"][class*="-600"] * {
+    color: #ffffff !important;
+}
+
 /* ── Toast ── */
 @keyframes slideInRight { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
 @keyframes fadeOut { from { opacity:1; } to { opacity:0; } }

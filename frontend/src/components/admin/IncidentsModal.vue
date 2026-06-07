@@ -1,8 +1,8 @@
 <template>
   <transition enter-active-class="transition duration-200" enter-from-class="opacity-0" enter-to-class="opacity-100">
     <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="$emit('close')"></div>
-      <div class="relative w-full max-w-lg glass rounded-2xl shadow-2xl flex flex-col" style="animation:modal-in 0.25s ease-out; max-height:85vh">
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm admin-modal-overlay" @click="$emit('close')"></div>
+      <div class="relative w-full max-w-lg glass admin-modal rounded-2xl shadow-2xl flex flex-col" style="animation:modal-in 0.25s ease-out; max-height:85vh">
         <div class="px-6 py-5 border-b border-white/5 flex justify-between items-center">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 bg-orange-500/15 rounded-xl flex items-center justify-center"><i class="fas fa-flag text-orange-400"></i></div>

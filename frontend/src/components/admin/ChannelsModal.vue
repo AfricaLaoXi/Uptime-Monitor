@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="fixed inset-0 z-50 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.6);backdrop-filter:blur(4px)" @click.self="$emit('close')">
-      <div class="glass rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 admin-modal-overlay" @click.self="$emit('close')">
+      <div class="glass admin-modal rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
         <div class="p-6 border-b border-white/5 flex items-center justify-between shrink-0">
           <div><h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fas fa-bell text-green-400"></i> 通知渠道管理</h3><p class="text-xs text-slate-500 mt-0.5">配置告警通知的推送渠道</p></div>
           <button @click="$emit('close')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"><i class="fas fa-times"></i></button>
